@@ -1,0 +1,81 @@
+.mover-container {
+    background: url("../images/MoverLogin.jpg") no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+nav {
+    background-color: #eeaf61;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-heading {
+    margin-right: 320px;
+    font-size: 1.3em;
+    margin-left: 55px;
+    font-family: "Georgia", sans-serif;
+    color: white;
+}
+
+.login-form {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8); /* Add transparency to make the form readable */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 3; /* Ensure form stays above background */
+    margin: 20px auto; /* Center the form */
+    margin-top: 250px;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-form input {
+    width: calc(100% - 22px); /* Adjusted width to accommodate padding and border */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #ce4993;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #ce4993;
+}
+
+.switch-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+    color: #ce4993;
+}
+
+.switch-button:hover {
+    text-decoration: underline;
+}
