@@ -1,10 +1,10 @@
-import React, { useState } from "react"; // Import useState from React
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./TPLogin.css";
 
 function TPLogin() {
     const navigate = useNavigate();
-    const [isLogin, setIsLogin] = useState(true); // State for toggling between login and sign up
+    const [isLogin, setIsLogin] = useState(true);
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -18,13 +18,43 @@ function TPLogin() {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission logic here (login or sign up)
+        const endpoint = isLogin ? 'http://localhost:5000/api/tp_authentication' : 'http://localhost:5000/api/tp_registration';
+        const payload = isLogin
+            ? { username: formData.username, password: formData.password }
+            : formData;
+
+        console.log(`Submitting to ${endpoint} with payload: ${JSON.stringify(payload)}`);
+
+        try {
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.headers.get('Content-Type')?.includes('application/json')) {
+                const data = await response.json();
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    navigate('/dashboard');
+                } else {
+                    throw new Error(data.message || 'Unknown error');
+                }
+            } else {
+                throw new Error('Unexpected response format');
+            }
+        } catch (err) {
+            console.error('Error:', err.message);
+            alert('An error occurred. Please try again.');
+        }
     };
 
     const switchForm = () => {
-        setIsLogin(!isLogin); 
+        setIsLogin(!isLogin);
     };
 
     return (
