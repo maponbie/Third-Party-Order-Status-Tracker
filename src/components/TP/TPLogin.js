@@ -40,7 +40,7 @@ function TPLogin() {
                 const data = await response.json();
                 if (response.ok) {
                     localStorage.setItem('token', data.token);
-                    navigate('/dashboard');
+                    navigate('/portal');
                 } else {
                     throw new Error(data.message || 'Unknown error');
                 }
