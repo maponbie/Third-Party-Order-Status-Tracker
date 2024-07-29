@@ -1,0 +1,101 @@
+.portal-image-container {
+    background-color: rgb(252, 243, 231);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex; /* Align side-bar and main-portal side by side */
+    overflow: hidden;
+}
+
+.side-bar {
+    background-color: rgb(252, 221, 218);
+    width: 18%;
+    height: 100vh; /* Full height for side-bar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-portal {
+    position: relative;
+    width: 82%; /* Remaining width after side-bar */
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black; 
+    padding: 20px;
+}
+
+.order-row {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px; /* Space between items */
+}
+
+.order-row div {
+    width: 33%;
+    height: 300px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Thicker shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+    position: relative; 
+    overflow: hidden; 
+    display: flex; /* Center text content */
+    flex-direction: column; /* Align items vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Center text alignment */
+    color: white; 
+}
+
+.order-row div:hover {
+    cursor: pointer;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Thicker shadow on hover */
+}
+
+.place-order {
+    background: linear-gradient(to right, #f5ba30, #fddf34);
+}
+
+.track-order {
+    background: linear-gradient(to right, #fda26a, #f96d8f);
+}
+
+.past-order {
+    background: linear-gradient(to right, #83f9c2, #33e6a1);
+}
+
+.order-row div::before,
+.order-row div::after {
+    content: '';
+    position: absolute;
+    width: 200px; /* Adjust size as needed */
+    height: 200px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.425); /* Semi-transparent white */
+    z-index: 1; /* Ensure circles are on top of the background */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Position of the first circle */
+.order-row div::before {
+    bottom: 200px; 
+    right: 20px;
+}
+
+/* Position of the second circle to overlap */
+.order-row div::after {
+    bottom: 250px; 
+    right: 100px;
+}
